@@ -32,7 +32,7 @@ object AccountCreatorService {
   private[this] def generateRandom(): String = {
     var a : Int = 1
     var accNo : String = ""
-    for(a <- 1 to 8){accNo = accNo + (Random.nextInt(9));println(a + " : " + accNo);}
+    for(a <- 1 to 8) accNo = accNo + (Random.nextInt(9))
     if(afs dataExists("accNo", accNo, "accounts"))
       generateRandom
     else  
