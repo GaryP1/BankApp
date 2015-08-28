@@ -34,15 +34,16 @@ object AccountFetchService {
     val fName = res getString "fName"
     val lName = res getString "lName"
     val email = res getString "email"
-    con.close()
+    con close()
     new Account(accNo2, PIN, balance, pass, fName, lName, email)
   }
   def dataExists(column : String, data : String, table : String): Boolean = {
     val con = DB getConnection()
     val stmt = con createStatement
-    var res = stmt executeQuery s"select $data from $table where $column = '$data'" 
+    var res = stmt executeQuery s"select $column from $table where $column = '$data'" 
     var rows = 0
     while (res next) rows+=1
+    con close()
     rows == 1
   }
 }

@@ -19,7 +19,7 @@ class Register {
     try{
       val input = data.bindFromRequest.get
       val acs = AccountCreatorService
-      acs.createAccount(input fName, input lName, input email, input password, input confirmPassword)
+      acs createAccount(input fName, input lName, input email, input password, input confirmPassword)
       Ok(views.html.login("Register Succesful"))
     }catch{
       case e : FieldException =>{BadRequest(views.html.register(e message))}

@@ -18,16 +18,15 @@ class Login extends Controller{
   val data : Form[Data] = Form(mapping("email" -> nonEmptyText, "password" -> nonEmptyText)(Data.apply)(Data.unapply))
   def doLogin = Action{ implicit request =>
     val sessionId = java.util.UUID.randomUUID().toString()
-    /*Get from web page*/
     try{
       val input = data.bindFromRequest.get
       val accFetch = AccountFetchService
-      require(accFetch dataExists("email", input.email, "userinfo"))
-      val account = accFetch.getAccount("email", input.email, "userinfo", false)
-      require(account.loginPass(input.password))
+      require(accFetch dataExists("email", input email, "userinfo"))
+      val account = accFetch getAccount("email", input email, "userinfo", false)
+      require(account loginPass(input password))
       val shs = SessionHandlerService
-      shs.setNewSessionId(account accNo, sessionId)
-      Ok(views.html.home(account, "")).withSession("uuid" -> sessionId)
+      shs setNewSessionId(account accNo, sessionId)
+      Ok(views.html.home(account, "")) withSession("uuid" -> sessionId)
     }catch{
       case e : IllegalArgumentException =>{Ok(views.html.login("Incorrect Login"))}  
     }
