@@ -1,0 +1,12 @@
+@(account : Account, error : String)
+@main("Transfer"){
+	@inputA(account,"doTransfer",error){
+		<table>
+			
+		</table>
+		<p>Please enter the account you wish to send money to.</p>
+		<input type="text" id="accTo" name="accTo" placeholder="Account Number"/>
+		<p>Please enter how much you wish to transfer.</p>
+	}
+	@n()
+}

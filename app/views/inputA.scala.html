@@ -1,0 +1,8 @@
+@(account : Account, goTo : String, error : String)(content: Html)
+<form action=@goTo method="post">
+	<p>Balance: @account.balance</p>
+	@errorCheck(error)
+	@content
+	<input type="text" id="amount" name="amount" /> 
+	<input type="submit" value="Proceed" />
+</form>
