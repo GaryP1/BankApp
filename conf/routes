@@ -14,6 +14,8 @@ POST	/doWithdraw					controllers.Withdraw.doWithdraw
 POST	/doTransfer					controllers.Transfer.doTransfer
 POST	/showRegister				controllers.Register.showRegister
 POST	/doRegister					controllers.Register.doRegister
+POST	/showTransactions			controllers.Transactions.showTransactions
+POST	/signout					controllers.Application.signOut
 
 
 # Map static resources from the /public folder to the /assets URL path

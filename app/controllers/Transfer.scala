@@ -26,6 +26,7 @@ class Transfer extends Controller{
     val afs = AccountFetchService
     val account = afs getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
     try{
+      require(!account.accNo.equals(input accTo))
       require(afs dataExists("accNo", input accTo, "accounts"))
       val accountTo = afs getAccount("accNo", input accTo, "accounts", true)
       val accHandler = AccountHandlerService

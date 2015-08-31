@@ -10,7 +10,6 @@ import play.api.data.Forms._
 import services.SessionHandlerService
 import services.AccountFetchService
 import models.Account
-import services.SessionHandlerService
 
 class Login extends Controller{
   

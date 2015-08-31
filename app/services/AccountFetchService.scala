@@ -34,9 +34,14 @@ object AccountFetchService {
     val fName = res getString "fName"
     val lName = res getString "lName"
     val email = res getString "email"
+    res = stmt executeQuery s"select * from transactions where accNo = '$accNo'"
+    res next()
+    val trans = res getString "transactions"
+    val transactions = trans split ";"
     con close()
-    new Account(accNo2, PIN, balance, pass, fName, lName, email)
+    new Account(accNo2, PIN, balance, pass, fName, lName, email, transactions)
   }
+  
   def dataExists(column : String, data : String, table : String): Boolean = {
     val con = DB getConnection()
     val stmt = con createStatement
