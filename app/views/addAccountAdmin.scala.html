@@ -1,0 +1,9 @@
+@(account : Account, error : String)
+@main("Deposit"){
+	<form action="doAddAccount" method="post">
+		@errorCheck(error)
+		<input type="text" id="amount" name="amount" /> 
+		<input type="submit" value="Proceed" />
+	</form>
+	@n()
+}

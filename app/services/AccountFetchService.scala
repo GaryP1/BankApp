@@ -28,6 +28,7 @@ object AccountFetchService {
     val accNo2 = res getString "accNo"
     val PIN = res getString "PIN"
     val balance = res getBigDecimal "balance"
+    val isAdmin = res getBoolean "isAdmin"
     res = stmt executeQuery s"select * from userinfo where accNo = '$accNo';"
     res next()  
     val pass = res getString "pass"
@@ -39,7 +40,7 @@ object AccountFetchService {
     val trans = res getString "transactions"
     val transactions = trans split ";"
     con close()
-    new Account(accNo2, PIN, balance, pass, fName, lName, email, transactions)
+    new Account(accNo2, PIN, balance, pass, fName, lName, email, transactions, isAdmin)
   }
   
   def dataExists(column : String, data : String, table : String): Boolean = {

@@ -15,7 +15,7 @@ class Deposit extends Controller{
   def showDeposit = Action{implicit request =>
     val afs = AccountFetchService
     val account = afs getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
-    Ok(views.html.deposit(account,"")) 
+    Ok(views.html.deposit(account,""))
   }
   
   case class DataD(amount : String)

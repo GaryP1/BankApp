@@ -23,7 +23,7 @@ object AccountCreatorService {
     var PIN = ""
     for(n <- 1 to 4) PIN.+(Random.nextInt(9))
     val dis = DatabaseInteractionService
-    dis executeUpdate(s"insert into accounts(accNo, balance, PIN) values('$accNo', $balance, '$PIN');")
+    dis executeUpdate(s"insert into accounts(accNo, balance, PIN) values('$accNo', $balance, '$PIN', false);")
     dis executeUpdate(s"insert into userinfo(accNo, pass, fName, lName, email, dob) values('$accNo', '$password', '$fName', '$lName', '$email', '00/00/0000');")
     dis executeUpdate(s"insert into transactions(accNo, transactions) values('$accNo', '');")
   }

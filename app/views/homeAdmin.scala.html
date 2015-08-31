@@ -1,0 +1,23 @@
+@(account : Account, message : String) 
+
+@main("Account") {
+	<p>ADMIN</p>
+	<table>
+		<td>
+			<p>@message</p>
+		</td>
+	</table>
+	<form action="showAddAccount" method="post">
+		<input type="submit" value="Withdraw"/>
+	</form>
+	<form action="showDeposit" method="post">
+		<input type="submit" value="Deposit">
+	</form>
+	<form action="showTransfer" method="post">
+		<input type="submit" value="Transfer">
+	</form>
+	<form action="showTransactions" method="post">
+		<input type="submit" value="Show Transactions">
+	</form>
+	@n()
+}

@@ -25,7 +25,10 @@ class Login extends Controller{
       require(account loginPass(input password))
       val shs = SessionHandlerService
       shs setNewSessionId(account accNo, sessionId)
-      Ok(views.html.home(account, "")) withSession("uuid" -> sessionId)
+      if(account isAdmin)
+        Ok(views.html.homeAdmin(account, "")) withSession("uuid" -> sessionId)
+      else
+        Ok(views.html.home(account, "")) withSession("uuid" -> sessionId)
     }catch{
       case e : IllegalArgumentException =>{Ok(views.html.login("Incorrect Login"))}  
     }
