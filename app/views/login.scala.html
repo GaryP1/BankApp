@@ -1,22 +1,17 @@
-@(error : String)
+@(error : String, form : Form[LoginModel])(implicit messages : Messages)
 @main("Log In"){
-	<div class="surround">
-		<form action="doLogin" method="post">
-			@errorCheck(error)
-			<div>
-				<input type="text" name="email" placeholder="Email Address"  class="input"/> 
-			</div>
-			<div>
-				<input type="password" name="password" placeholder="Password"  class="input"/> 
-			</div>
-			<div>
-				<input type="submit" value="Log In" class="submit">
-			</div>
-		</form>
-		<form action="showRegister" method="post">
-			<div>
-				<input type="submit" value="Register" class="submit">
-			</div>
-		</form>
-	</div>
+	@helper.form(action = routes.Login.doLogin()){
+		@helper.inputText(form("email"),
+			'placeholder -> "Email",
+			'_label -> null
+		)
+		@helper.inputPassword(form("password"),
+			'placeholder -> "Password",
+			'_label -> null
+		)
+		<input type="submit" value="Log In">
+	}
+	@helper.form(action = routes.Register.showRegister()){
+		<input type="submit" value="Register">
+	}
 }

@@ -4,34 +4,32 @@ package controllers
  * @author a585401
  */
 
-import play.api._
+import exceptions.FieldException
+import models.TransactionData
 import play.api.mvc._
-import play.api.data._
-import play.api.data.Forms._
 import services.AccountFetchService
 import services.AccountHandlerService
+import play.api.i18n.Messages.Implicits._
+import play.api.Play.current
 
 class Withdraw extends Controller{
   
   def showWithdraw = Action{implicit request =>
     val afs = AccountFetchService
     val account = afs.getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
-    Ok(views.html.withdraw(account,"")) 
+    Ok(views.html.withdraw(account,"", TransactionData.transactionData1))
   }
-  
-  case class DataW(amount : String)
-  val data : Form[DataW]=Form(mapping("amount" -> nonEmptyText)(DataW apply)(DataW unapply))
+
   def doWithdraw = Action{implicit request =>
-    val afs = AccountFetchService
-    val account = afs.getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
+    val account = AccountFetchService getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
     try{
-      val input = data.bindFromRequest.get
-      val accHandler = AccountHandlerService
-      accHandler withdraw(account, input amount)
+      TransactionData.transactionData1.bindFromRequest.fold(
+        errors => BadRequest(views.html.withdraw(account, "Not enough Cash...", TransactionData.transactionData1)),
+        value => AccountHandlerService withdraw(account, value amount)
+      )
       Ok(views.html.home(account, "Withdraw Successful"))
     }catch{
-      case e : IllegalArgumentException =>{BadRequest(views.html.withdraw(account, "Withdraw Failed"))}
+      case e : FieldException => BadRequest(views.html.withdraw(account, e message, TransactionData.transactionData1))
     }
-      
   }
 }

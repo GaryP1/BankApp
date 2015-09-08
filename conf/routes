@@ -4,22 +4,39 @@
 
 # Home page
 GET     /                           controllers.Login.showLogin
-POST	/doLogin					controllers.Login.doLogin
-POST	/showHome					controllers.Home.showHome
+POST	/doLogin             		controllers.Login.doLogin
+POST	/showHome                  	controllers.Home.showHome
 POST	/showDeposit				controllers.Deposit.showDeposit
-POST	/showWithdraw				controllers.Withdraw.showWithdraw
-POST	/showTransfer				controllers.Transfer.showTransfer
-POST	/doDeposit					controllers.Deposit.doDeposit
-POST	/doWithdraw					controllers.Withdraw.doWithdraw
-POST	/doTransfer					controllers.Transfer.doTransfer
-POST	/showRegister				controllers.Register.showRegister
-POST	/doRegister					controllers.Register.doRegister
-POST	/showTransactions			controllers.Transactions.showTransactions
-POST	/signout					controllers.Application.signOut
+POST	/showWithdraw          		controllers.Withdraw.showWithdraw
+POST	/showTransfer           	controllers.Transfer.showTransfer
+POST	/doDeposit       			controllers.Deposit.doDeposit
+POST	/doWithdraw          		controllers.Withdraw.doWithdraw
+POST	/doTransfer      			controllers.Transfer.doTransfer
+POST	/showRegister           	controllers.Register.showRegister
+POST	/doRegister       			controllers.Register.doRegister
+POST	/showTransactions           controllers.Transactions.showTransactions
+POST	/signOut       				controllers.Application.signOut
 
 #Admin
-POST	/showAddAccount				controllers.Admin.showAddAccount
-POST	/doAddAccount				controllers.Admin.doAddAccount
+POST	/showAddAccount             controllers.Admin.showAddAccount
+POST	/doAddAccount           	controllers.Admin.doAddAccount
+POST 	/showAccountSearch          controllers.Admin.showAccountSearch
+POST	/doAccountSearch            controllers.Admin.doAccountSearch
+
+#Gets
+GET 	/doLogin             		controllers.Login.showLogin
+GET     /showHome                  	controllers.Error.showError
+GET	    /showDeposit				controllers.Error.showError
+GET	    /showWithdraw          		controllers.Error.showError
+GET	    /showTransfer           	controllers.Error.showError
+GET	    /doDeposit       			controllers.Error.showError
+GET	    /doWithdraw          		controllers.Error.showError
+GET	    /doTransfer      			controllers.Error.showError
+GET	    /showRegister           	controllers.Error.showError
+GET	    /doRegister       			controllers.Error.showError
+GET	    /showTransactions           controllers.Error.showError
+GET	    /signOut       				controllers.Error.showError
+
 
 
 # Map static resources from the /public folder to the /assets URL path

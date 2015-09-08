@@ -6,7 +6,6 @@ package services
 
 import play.api.Play.current
 import play.api.db._
-import java.sql.ResultSet
 
 
 object DatabaseInteractionService {  

@@ -15,9 +15,9 @@ object AccountTransactionService {
     val stmt = con.createStatement
     val date : Date = new Date
     val dateString = date.getDate + "/" + date.getMonth + "/" + ((date getYear) + 1900)
-    var res = stmt executeQuery s"select transactions from transactions where accNo = '$accNo'"
+    val res = stmt executeQuery s"select transactions from transactions where accNo = '$accNo'"
     res next
-    var transactions = (res getString "transactions") + s"$amount $tType $dateString;"
+    val transactions = (res getString "transactions") + s"$amount $tType $dateString;"
     stmt executeUpdate s"update transactions set transactions = '$transactions' where accNo = '$accNo'"
     con close
   }

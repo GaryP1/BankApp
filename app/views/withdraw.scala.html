@@ -1,5 +1,9 @@
-@(account : Account, error : String)
+@(account : Account, error : String, form : Form[TransactionData1])(implicit messages : Messages)
 @main("Withdraw"){
-	@inputA(account,"doWithdraw",error){<!---->}
-	@n()
+	@helper.form(action = routes.Withdraw.doWithdraw()){
+		<p>Balance: @account.balance</p>
+		@errorCheck(error)
+		@helper.inputText(form("amount"),'_label -> null)
+		<input type="submit" value="Proceed" />
+	}
 }

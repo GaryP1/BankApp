@@ -4,33 +4,34 @@ package controllers
  * @author a585401
  */
 
-import play.api._
+import exceptions.FieldException
+import models.TransactionData
 import play.api.mvc._
-import play.api.data._
-import play.api.data.Forms._
-import services.{AccountFetchService, AccountHandlerService}
+import services.{AccountHandlerService, AccountFetchService}
+import play.api.i18n.Messages.Implicits._
+import play.api.Play.current
 
 class Deposit extends Controller{
   
   def showDeposit = Action{implicit request =>
     val afs = AccountFetchService
     val account = afs getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
-    Ok(views.html.deposit(account,""))
+    Ok(views.html.deposit(account,"", TransactionData.transactionData1))
   }
   
-  case class DataD(amount : String)
-  val data : Form[DataD]=Form(mapping("amount" -> nonEmptyText)(DataD.apply)(DataD.unapply))
+
   def doDeposit = Action{implicit request =>
-    val afs = AccountFetchService
-    val account = afs getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
+    val account = AccountFetchService getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
     try{
-      val input = data.bindFromRequest.get
-      val accHandler = AccountHandlerService
-      accHandler deposit(account, input amount)
-      Ok(views.html.home(account, "Deposit Successful"))
+      TransactionData.transactionData1.bindFromRequest.fold(
+        errors => BadRequest(views.html.deposit(account, "asda", TransactionData.transactionData1)),
+        value => {
+          AccountHandlerService deposit(account, value amount)
+          Ok(views.html.home(account, "Deposit Successful"))
+        }
+      )
     }catch{
-      case e : IllegalArgumentException =>{BadRequest(views.html.deposit(account, "Deposit Failed"))}
+      case e : FieldException => BadRequest(views.html.deposit(account, e message, TransactionData.transactionData1))
     }
   }
-  
 }

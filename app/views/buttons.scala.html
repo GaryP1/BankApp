@@ -1,12 +1,12 @@
 <div>
 	<div>
-		<form action="showHome" method="post">
+		@helper.form(action = routes.Home.showHome()){
 			<input type="submit" value="Home Page"/>
-		</form>
+		}
 	</div>
 	<div>
-		<form action="signout" method="post">
+		@helper.form(action = routes.Application.signOut()){
 			<input type="submit" value="Sign Out"/>
-		</form>
+		}
 	</div>
 </div>

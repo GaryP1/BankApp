@@ -15,16 +15,15 @@ object SessionHandlerService {
      try{
        val con = DB getConnection()
        val stmt = con createStatement
-       val rs = stmt executeQuery s"select lastSession from userinfo where accNo ='${accNo}';"
+       val rs = stmt executeQuery s"select lastSession from userinfo where accNo ='$accNo';"
        rs next()
        con close()
        rs getString "lastsession"
      }catch{
-       case e : IllegalArgumentException =>{throw new FieldException("No match!")}
+       case e : IllegalArgumentException =>{throw new FieldException("No session ID match!")}
      }
   }
   def setNewSessionId(accNo : String, uuid : String){
-    val dis = DatabaseInteractionService
-    dis executeUpdate s"update userinfo set lastsession='$uuid' where accNo = '$accNo';"
+    DatabaseInteractionService executeUpdate s"update userinfo set lastsession='$uuid' where accNo = '$accNo';"
   }
 }

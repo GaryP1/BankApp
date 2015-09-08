@@ -1,7 +1,7 @@
-@(account : Account, tranHandler : TransactionService)
+@(account : Account, tranSer : services.TransactionService)
 
 @main("Account") {
-	@n()
+
 	<p> Account Number: @account.accNo</p>
 	<p>Welcome @account.fName, please choose an option from below.</p>
 	<p>Current Balance: @account.balance</p>
@@ -9,9 +9,10 @@
 		@for(transaction <- account.transactions){
 			<tr>
 			<td>
-				<p>@tranHandler.reform(transaction)</p>
+				<p>@tranSer.reform(transaction)</p>
 			</td>
 			</tr>
 		}
 	</table>
+	@buttons()
 }

@@ -1,0 +1,12 @@
+@(account : Account, accounts : java.util.ArrayList[Account])
+
+@main("Account") {
+	<p>ADMIN</p>
+	<table>
+		<td>AccountNumber</td><td>FirstName</td><td>Surname</td><td>EmailAddress</td><tr>
+		@for(account <- accounts){
+			<td>@account.accNo</td><td>@account.fName</td><td>@account.lName</td><td>@account.email</td><tr>
+		}
+	</table>
+	@buttons()
+}

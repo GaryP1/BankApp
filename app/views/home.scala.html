@@ -7,16 +7,17 @@
 			<p>@message</p>
 		</td>
 	</table>
-	<form action="showWithdraw" method="post">
+	<form action=@routes.Withdraw.showWithdraw() method="post">
 		<input type="submit" value="Withdraw"/>
 	</form>
-	<form action="showDeposit" method="post">
+	<form action=@routes.Deposit.showDeposit() method="post">
 		<input type="submit" value="Deposit">
 	</form>
-	<form action="showTransfer" method="post">
+	<form action=@routes.Transfer.showTransfer() method="post">
 		<input type="submit" value="Transfer">
 	</form>
-	<form action="showTransactions" method="post">
+	<form action=@routes.Transactions.showTransactions() method="post">
 		<input type="submit" value="Show Transactions">
 	</form>
+	@buttons()
 }

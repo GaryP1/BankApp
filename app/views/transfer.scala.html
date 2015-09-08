@@ -1,12 +1,13 @@
-@(account : Account, error : String)
+@(account : Account, error : String, form : Form[TransactionData2])(implicit messages : Messages)
 @main("Transfer"){
-	@inputA(account,"doTransfer",error){
-		<table>
-			
-		</table>
+	@helper.form(action = routes.Transfer.doTransfer()){
+		<p>Balance: @account.balance</p>
+		@errorCheck(error)
 		<p>Please enter the account you wish to send money to.</p>
-		<input type="text" id="accTo" name="accTo" placeholder="Account Number"/>
-		<p>Please enter how much you wish to transfer.</p>
+		@helper.inputText(form("accNoTo"),'_label -> null)
+		<p>Please enter the amount you wish to transfer</p>
+		@helper.inputText(form("amount"),'_label -> null)
+		<input type="submit" value="Proceed" />
 	}
-	@n()
+	@buttons
 }

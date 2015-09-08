@@ -1,14 +1,12 @@
-@(error : String)
+@(error : String, form : Form[RegisterModel1])(implicit messages : Messages)
 @main("Register"){
-	<form action="doRegister" method="post">
-		@if(error!=null){
-				<p class="errorMessage">@error</p>
-		}
-		<input type="text" name="fName" placeholder="First Name"/>
-		<input type="text" name="lName" placeholder="Surname"/>
-		<input type="text" name="email" placeholder="Email Address"/>
-		<input type="password" name="password" placeholder="Password"/>
-		<input type="password" name="confirmPassword" placeholder="Confirm Password"/>
-	    <input type="submit" value="Register">
-	</form>
+	@helper.form(action = routes.Register.doRegister()){
+		@errorCheck(error)
+		@helper.inputText(field = form("fName"),'_label -> null)
+		@helper.inputText(field = form("lName"),'_label -> null)
+		@helper.inputText(field = form("email"),'_label -> null)
+		@helper.inputPassword(field = form("password"),'_label -> null)
+		@helper.inputPassword(field = form("confirmPassword"),'_label -> null)
+		<input type="submit" value="Proceed" />
+	}
 }

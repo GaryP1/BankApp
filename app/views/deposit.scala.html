@@ -1,5 +1,10 @@
-@(account : Account, error : String)
+@(account : Account, error : String, form : Form[TransactionData1])(implicit messages : Messages)
 @main("Deposit"){
-	@inputA(account, "doDeposit", error){<!--  -->}
-	@n()
+	@helper.form(action = routes.Deposit.doDeposit()){
+		<p>Balance: @account.balance</p>
+		@errorCheck(error)
+		@helper.inputText(field = form("amount"),'_label -> null)
+		<input type="submit" value="Proceed" />
+	}
+	@buttons()
 }

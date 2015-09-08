@@ -4,11 +4,10 @@ package controllers
  * @author a585401
  */
 
-import play.api._
 import play.api.mvc._
-import play.api.data._
-import play.api.data.Forms._
 import services.AccountFetchService
+import play.api.i18n.Messages.Implicits._
+import play.api.Play.current
 
 class Home extends Controller{
   
