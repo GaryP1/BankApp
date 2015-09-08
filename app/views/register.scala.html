@@ -1,4 +1,4 @@
-@(error : String, form : Form[RegisterModel1])(implicit messages : Messages)
+@(error : String = "", form : Form[RegisterModel1] = RegisterForm.registerForm1)(implicit messages : Messages)
 @main("Register"){
 	@helper.form(action = routes.Register.doRegister()){
 		@errorCheck(error)

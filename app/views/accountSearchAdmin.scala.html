@@ -1,4 +1,4 @@
-@(account : Account, message : String, form : Form[SearchModel])(implicit messages : Messages)
+@(account : Account, message : String = "", form : Form[SearchModel] = SearchForm.searchForm)(implicit messages : Messages)
 
 @main("Account") {
 	<p>ADMIN</p>

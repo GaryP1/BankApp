@@ -9,8 +9,7 @@ import services.TransactionService
 
 class Transactions extends Controller{
   def showTransactions = Action{implicit request =>
-    val afs = AccountFetchService
-    val account = afs.getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
-    Ok(views.html.transactions(account, new TransactionService))
+    val account = AccountFetchService getAccount("lastsession", request.session.get("uuid").get)
+    Ok(views.html.transactions(account))
   }
 }

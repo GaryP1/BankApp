@@ -12,12 +12,12 @@ import java.util.ArrayList
 
 object AccountFetchService {
   
-  def getAccount(columnName : String, data : String, tableName : String, isAccNo : Boolean) : Account = {
+  def getAccount(columnName : String = "accNo", data : String, tableName : String = "userinfo") : Account = {
     val con = DB getConnection()
     val stmt = con createStatement
     var res  : ResultSet = null
     var accNo = data
-    if(!isAccNo){
+    if(!(columnName equals "accNo")){
       res = stmt executeQuery s"select accNo from $tableName where $columnName = '$data';"
       res next()
       accNo = res getString "accNo"
@@ -68,7 +68,7 @@ object AccountFetchService {
     val accounts : ArrayList[Account] = new ArrayList[Account]()
     while(res next) {
       val accNo = res getString "accNo"
-      val account = getAccount("accNo", accNo, "accounts", true)
+      val account = getAccount(data = accNo)
       accounts add account
     }
     con close()

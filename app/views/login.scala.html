@@ -1,4 +1,4 @@
-@(error : String, form : Form[LoginModel])(implicit messages : Messages)
+@(error : String = "", form : Form[LoginModel] = LoginForm.loginForm)(implicit messages : Messages)
 @main("Log In"){
 	@helper.form(action = routes.Login.doLogin()){
 		@helper.inputText(form("email"),

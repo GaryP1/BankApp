@@ -14,24 +14,23 @@ import play.api.Play.current
 class Deposit extends Controller{
   
   def showDeposit = Action{implicit request =>
-    val afs = AccountFetchService
-    val account = afs getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
-    Ok(views.html.deposit(account,"", TransactionData.transactionData1))
+    val account = AccountFetchService getAccount("lastsession", request.session.get("uuid").get)
+    Ok(views.html.deposit(account))
   }
   
 
   def doDeposit = Action{implicit request =>
-    val account = AccountFetchService getAccount("lastsession", request.session.get("uuid").get, "userinfo", false)
+    val account = AccountFetchService getAccount("lastsession", request.session.get("uuid").get)
     try{
       TransactionData.transactionData1.bindFromRequest.fold(
-        errors => BadRequest(views.html.deposit(account, "asda", TransactionData.transactionData1)),
+        errors => BadRequest(views.html.deposit(account)),
         value => {
           AccountHandlerService deposit(account, value amount)
           Ok(views.html.home(account, "Deposit Successful"))
         }
       )
     }catch{
-      case e : FieldException => BadRequest(views.html.deposit(account, e message, TransactionData.transactionData1))
+      case e : FieldException => BadRequest(views.html.deposit(account, e message))
     }
   }
 }

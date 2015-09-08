@@ -1,6 +1,5 @@
 package services
 
-import exceptions.FieldException
 import scala.util.Random
 import java.math.BigDecimal
 /**
@@ -11,7 +10,7 @@ object AccountCreatorService {
 
   private[this] val afs = AccountFetchService
 
-  def createAccount(fName : String, lName : String, email : String, password : String, confPassword : String, isAdmin : Boolean) = {
+  def createAccount(fName : String, lName : String, email : String, password : String, isAdmin : Boolean = false) = {
     val accNo = generateRandom()
     val balance = new BigDecimal("0")
     var PIN = ""

@@ -17,25 +17,21 @@ class Login extends Controller{
     val sessionId = java.util.UUID.randomUUID().toString()
     try{
       LoginForm.loginForm.bindFromRequest.fold(
-        errors => BadRequest(views.html.login("", LoginForm.loginForm)),
+        errors => BadRequest(views.html.login()),
         value => {
-          val account = AccountFetchService getAccount ("email", value email, "userinfo", false)
-          if(account loginPass(value password)){
-            SessionHandlerService setNewSessionId (account accNo, sessionId)
-            if(account isAdmin)
-              Ok(views.html.homeAdmin(account, "")).addingToSession(("uuid",sessionId))
-            else
-              Ok(views.html.home(account, ""))
-          }
+          val account = AccountFetchService getAccount ("email", value email)
+          SessionHandlerService setNewSessionId (account accNo, sessionId)
+          if(account isAdmin)
+            Ok(views.html.homeAdmin(account)).addingToSession(("uuid",sessionId))
           else
-            BadRequest(views.html.login("Password doesn't match", LoginForm.loginForm))
+            Ok(views.html.home(account))
         }
       )
     }
-    catch { case e : FieldException => BadRequest(views.html.login(e.message, LoginForm.loginForm))}
+    catch { case e : FieldException => BadRequest(views.html.login(e.message))}
   }
   
   def showLogin = Action {
-    Ok(views.html.login("", LoginForm.loginForm))
+    Ok(views.html.login())
   }
 }

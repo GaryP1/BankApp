@@ -9,7 +9,7 @@ import play.api.data.Forms._
 case class SearchModel(searchCriteria : String, searchField : String)
 object SearchForm{
   val searchForm : Form[SearchModel] = Form(mapping(
-    "searchCriteria" ->  nonEmptyText.verifying(),
-    "searchField" -> nonEmptyText.verifying())
+    "searchCriteria" ->  nonEmptyText,
+    "searchField" -> nonEmptyText)
     (SearchModel.apply)(SearchModel.unapply))
 }

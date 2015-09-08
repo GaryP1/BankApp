@@ -1,4 +1,4 @@
-@(account : Account, error : String, form : Form[TransactionData2])(implicit messages : Messages)
+@(account : Account, error : String = "", form : Form[TransactionData2] = TransactionData.transactionData2)(implicit messages : Messages)
 @main("Transfer"){
 	@helper.form(action = routes.Transfer.doTransfer()){
 		<p>Balance: @account.balance</p>

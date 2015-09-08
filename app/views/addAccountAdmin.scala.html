@@ -1,4 +1,4 @@
-@(account : Account, error : String, form : Form[RegisterModel2])(implicit messages : Messages)
+@(account : Account, error : String = "", form : Form[RegisterModel2] = RegisterForm.registerForm2)(implicit messages : Messages)
 @main("Deposit"){
 	@helper.form(action = routes.Admin.doAddAccount()){
 		@errorCheck(error)

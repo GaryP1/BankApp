@@ -10,20 +10,20 @@ import play.api.Play.current
 
 
 class Register {
-  def showRegister() =Action{Ok(views.html.register("", RegisterForm.registerForm1))}
+  def showRegister() =Action{Ok(views.html.register())}
 
   def doRegister() = Action{implicit request =>
     try{
       RegisterForm.registerForm1.bindFromRequest.fold(
-        errors=> BadRequest(views.html.register("",RegisterForm.registerForm1)),
+        errors=> BadRequest(views.html.register()),
         value=>{
-          AccountCreatorService createAccount(value fName, value lName, value email, value password, value confirmPassword, false)
-          Ok(views.html.login("Register Succesful", LoginForm.loginForm))
+          AccountCreatorService createAccount(value fName, value lName, value email, value password)
+          Ok(views.html.login("Register Successful"))
         }
       )
 
     }catch{
-      case e : FieldException =>{BadRequest(views.html.register(e message,RegisterForm.registerForm1))}
+      case e : FieldException =>{BadRequest(views.html.register(e message))}
     }
   }
 }

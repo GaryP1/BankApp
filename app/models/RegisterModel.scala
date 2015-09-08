@@ -11,6 +11,8 @@ import models.Constraints._
 case class RegisterModel1(fName : String, lName : String, email : String, password : String, confirmPassword : String)
 case class RegisterModel2(fName : String, lName : String, email : String, password : String, confirmPassword : String, isAdmin : Boolean)
 object RegisterForm{
+
+  @throws(classOf[FieldException])
   val registerForm2 : Form[RegisterModel2] = Form(mapping(
     "fName"->nonEmptyText.verifying(nameConstraints),
     "lName"->nonEmptyText.verifying(nameConstraints),
@@ -20,6 +22,8 @@ object RegisterForm{
     "isAdmin"-> boolean)
     (RegisterModel2.apply)(RegisterModel2.unapply)verifying(throw new FieldException("Passwords Do Not Match"), form=>form.password equals form.confirmPassword)
   )
+
+  @throws(classOf[FieldException])
   val registerForm1 : Form[RegisterModel1] = Form(mapping(
     "fName"->nonEmptyText.verifying(nameConstraints),
     "lName"->nonEmptyText.verifying(nameConstraints),
