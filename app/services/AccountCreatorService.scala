@@ -15,10 +15,9 @@ object AccountCreatorService {
     val balance = new BigDecimal("0")
     var PIN = ""
     for(n <- 1 to 4) PIN = PIN+(Random nextInt 9)
-    val dis = DatabaseInteractionService
-    dis executeUpdate s"insert into accounts(accNo, balance, PIN, isAdmin) values('$accNo', $balance, '$PIN', $isAdmin);"
-    dis executeUpdate s"insert into userinfo(accNo, pass, fName, lName, email, dob) values('$accNo', '$password', '$fName', '$lName', '$email', '00/00/0000');"
-    dis executeUpdate s"insert into transactions(accNo, transactions) values('$accNo', '');"
+    DatabaseInteractionService executeUpdate s"insert into accounts(accNo, balance, PIN, isAdmin) values('$accNo', $balance, '$PIN', $isAdmin);"
+    DatabaseInteractionService executeUpdate s"insert into userinfo(accNo, pass, fName, lName, email, dob) values('$accNo', '$password', '$fName', '$lName', '$email', '00/00/0000');"
+    DatabaseInteractionService executeUpdate s"insert into transactions(accNo, transactions) values('$accNo', '');"
   }
 
   private[this] def generateRandom(): String = {

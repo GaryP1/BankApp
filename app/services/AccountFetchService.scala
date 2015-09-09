@@ -65,7 +65,7 @@ object AccountFetchService {
       case "accNo" =>
         res = stmt executeQuery s"select accNo from userinfo where accNo = '$input'"
     }
-    val accounts : ArrayList[Account] = new ArrayList[Account]()
+    val accounts : ArrayList[Account] = new ArrayList[Account]
     while(res next) {
       val accNo = res getString "accNo"
       val account = getAccount(data = accNo)

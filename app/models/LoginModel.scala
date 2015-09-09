@@ -17,5 +17,5 @@ object LoginForm {
     "email" -> nonEmptyText.verifying(emailExists),
     "password" -> nonEmptyText)
     (LoginModel.apply)(LoginModel.unapply)
-    verifying(throw new FieldException("Incorrect Password"),form => !(AccountFetchService getAccount("email", form email) loginPass(form password))))
+    verifying(throw new FieldException("Incorrect Password"),form => AccountFetchService getAccount("email", form email) loginPass(form password)))
 }
