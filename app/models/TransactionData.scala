@@ -16,8 +16,8 @@ object TransactionData{
     (TransactionData1.apply)(TransactionData1.unapply))
 
   val transactionData2 : Form[TransactionData2]=Form(mapping(
-    "amount" -> nonEmptyText.verifying(numberConstraint),
-    "accNoTo" -> nonEmptyText.verifying(accountExists))
+    "accNoTo" -> nonEmptyText.verifying(accountExists),
+    "amount" -> nonEmptyText.verifying(numberConstraint))
   (TransactionData2.apply)(TransactionData2.unapply))
 
 

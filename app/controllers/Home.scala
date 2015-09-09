@@ -13,6 +13,9 @@ class Home extends Controller{
   
   def showHome = Action{implicit request =>
     val account = AccountFetchService getAccount("lastsession", request.session.get("uuid").get)
-    Ok(views.html.home(account))
+    if(account isAdmin)
+      Ok(views.html.homeAdmin(account))
+    else
+      Ok(views.html.home(account))
   }
 }

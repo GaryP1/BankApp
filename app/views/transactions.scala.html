@@ -1,18 +1,22 @@
 @(account : Account, tranSer : services.TransactionService = new services.TransactionService())
 
-@main("Account") {
-
-	<p> Account Number: @account.accNo</p>
-	<p>Welcome @account.fName, please choose an option from below.</p>
-	<p>Current Balance: @account.balance</p>
-	<table class="table">
-		@for(transaction <- account.transactions){
-			<tr>
-			<td>
-				<p>@tranSer.reform(transaction)</p>
-			</td>
-			</tr>
-		}
-	</table>
-	@buttons()
+@main("Home") {
+    <p> Account Number: @account.accNo</p>
+    <p>Current Balance: @account.balance</p>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <th>All Previous Transactions</th>
+            </thead>
+            <tbody>
+            @for(transaction <- account.transactions){
+            <tr>
+                <td>
+                    <p>@tranSer.reform(transaction)</p>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 }

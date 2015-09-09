@@ -7,6 +7,6 @@ import play.api.mvc._
  */
 class Error extends Controller{
   def showError = Action{implicit request=>
-    Unauthorized
+    Unauthorized("TODO - Temporary fix")
   }
 }

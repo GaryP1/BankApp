@@ -3,7 +3,7 @@
 	@helper.form(action = routes.Withdraw.doWithdraw()){
 		<p>Balance: @account.balance</p>
 		@errorCheck(error)
-		@helper.inputText(form("amount"),'_label -> null)
-		<input type="submit" value="Proceed" />
+		@helper.inputText(form("amount"),'_label -> null, 'class -> "form-control")
+		<input type="submit" value="Proceed" class="btn btn-default"/>
 	}
 }

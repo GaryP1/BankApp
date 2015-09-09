@@ -2,13 +2,12 @@
 @main("Deposit"){
 	@helper.form(action = routes.Admin.doAddAccount()){
 		@errorCheck(error)
-		@helper.inputText(field = form("fName"),'_label -> null)
-		@helper.inputText(field = form("lName"),'_label -> null)
-		@helper.inputText(field = form("email"),'_label -> null)
-		@helper.inputPassword(field = form("password"),'_label -> null)
-		@helper.inputPassword(field = form("confirmPassword"),'_label -> null)
-		@helper.checkbox(field = form("isAdmin"),'_label -> null)
-		<input type="submit" value="Proceed" />
+		@helper.inputText(field = form("fName"),'_label -> null, 'class -> "form-control")
+		@helper.inputText(field = form("lName"),'_label -> null, 'class -> "form-control")
+		@helper.inputText(field = form("email"),'_label -> null, 'class -> "form-control")
+		@helper.inputPassword(field = form("password"),'_label -> null, 'class -> "form-control")
+		@helper.inputPassword(field = form("confirmPassword"),'_label -> null, 'class -> "form-control")
+		@helper.checkbox(field = form("isAdmin"),'_label -> null, 'class -> "form-control")
+		<input type="submit" value="Proceed" class="btn btn-default" />
 	}
-	@buttons()
 }

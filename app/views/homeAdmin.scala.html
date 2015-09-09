@@ -1,23 +1,30 @@
-@(account : Account, message : String = "")
+@(account : Account, message : String = "", tranSer : services.TransactionService = new services.TransactionService())
 
 @main("Account") {
 	<p>ADMIN</p>
 	<table>
 		<td>
-			<p>@message</p>
+			<p class="text=success">@message</p>
 		</td>
 	</table>
+	<table class="table table-hover">
+		<thead>
+		<th>Previous Transactions</th>
+		</thead>
+		<tbody>
+		@for(transaction <- account.getLastTrans){
+		<tr>
+			<td>
+				<p>@tranSer.reform(transaction)</p>
+			</td>
+		</tr>
+		}
+		</tbody>
+	</table>
 	<form action=@routes.Admin.showAddAccount() method="post">
-		<input type="submit" value="Add Account"/>
+		<input type="submit" value="Add Account" class="btn btn-default"/>
 	</form>
 	<form action=@routes.Admin.showAccountSearch() method="post">
-		<input type="submit" value="Account Search">
+		<input type="submit" value="Account Search" class="btn btn-default">
 	</form>
-	<form action=@routes.Transfer.showTransfer method="post">
-		<input type="submit" value="Transfer">
-	</form>
-	<form action=@routes.Transactions.showTransactions method="post">
-		<input type="submit" value="Show Transactions">
-	</form>
-	@buttons()
 }

@@ -3,15 +3,14 @@
 	@helper.form(action = routes.Login.doLogin()){
 		@helper.inputText(form("email"),
 			'placeholder -> "Email",
-			'_label -> null
+			'_label -> null,
+			'class -> "form-control"
 		)
 		@helper.inputPassword(form("password"),
 			'placeholder -> "Password",
-			'_label -> null
+			'_label -> null,
+			'class -> "form-control"
 		)
-		<input type="submit" value="Log In">
-	}
-	@helper.form(action = routes.Register.showRegister()){
-		<input type="submit" value="Register">
+		<input type="submit" value="Log In" class="btn btn-default">
 	}
 }

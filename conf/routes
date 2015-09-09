@@ -5,17 +5,10 @@
 # Home page
 GET     /                           controllers.Login.showLogin
 POST	/doLogin             		controllers.Login.doLogin
-POST	/showHome                  	controllers.Home.showHome
-POST	/showDeposit				controllers.Deposit.showDeposit
-POST	/showWithdraw          		controllers.Withdraw.showWithdraw
-POST	/showTransfer           	controllers.Transfer.showTransfer
 POST	/doDeposit       			controllers.Deposit.doDeposit
 POST	/doWithdraw          		controllers.Withdraw.doWithdraw
 POST	/doTransfer      			controllers.Transfer.doTransfer
-POST	/showRegister           	controllers.Register.showRegister
 POST	/doRegister       			controllers.Register.doRegister
-POST	/showTransactions           controllers.Transactions.showTransactions
-POST	/signOut       				controllers.Application.signOut
 
 #Admin
 POST	/showAddAccount             controllers.Admin.showAddAccount
@@ -25,17 +18,17 @@ POST	/doAccountSearch            controllers.Admin.doAccountSearch
 
 #Gets
 GET 	/doLogin             		controllers.Login.showLogin
-GET     /showHome                  	controllers.Error.showError
-GET	    /showDeposit				controllers.Error.showError
-GET	    /showWithdraw          		controllers.Error.showError
-GET	    /showTransfer           	controllers.Error.showError
-GET	    /doDeposit       			controllers.Error.showError
-GET	    /doWithdraw          		controllers.Error.showError
-GET	    /doTransfer      			controllers.Error.showError
-GET	    /showRegister           	controllers.Error.showError
-GET	    /doRegister       			controllers.Error.showError
-GET	    /showTransactions           controllers.Error.showError
-GET	    /signOut       				controllers.Error.showError
+GET     /showHome                  	controllers.Home.showHome
+GET	    /showDeposit				controllers.Deposit.showDeposit
+GET	    /showWithdraw          		controllers.Withdraw.showWithdraw
+GET	    /showTransfer           	controllers.Transfer.showTransfer
+GET	    /doDeposit       			controllers.Deposit.showDeposit
+GET	    /doWithdraw          		controllers.Withdraw.showWithdraw
+GET	    /doTransfer      			controllers.Transfer.showTransfer
+GET	    /showRegister           	controllers.Register.showRegister
+GET	    /doRegister       			controllers.Register.showRegister
+GET	    /signOut       				controllers.Application.signOut
+GET     /showTransactions           controllers.Transactions.showTransactions
 
 
 

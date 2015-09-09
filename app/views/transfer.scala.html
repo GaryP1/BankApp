@@ -4,10 +4,9 @@
 		<p>Balance: @account.balance</p>
 		@errorCheck(error)
 		<p>Please enter the account you wish to send money to.</p>
-		@helper.inputText(form("accNoTo"),'_label -> null)
+		@helper.inputText(form("accNoTo"),'_label -> null, 'class -> "form-control")
 		<p>Please enter the amount you wish to transfer</p>
-		@helper.inputText(form("amount"),'_label -> null)
-		<input type="submit" value="Proceed" />
+		@helper.inputText(form("amount"),'_label -> null, 'class -> "form-control")
+		<input type="submit" value="Proceed" class="btn btn-default"/>
 	}
-	@buttons
 }

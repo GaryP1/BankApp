@@ -2,11 +2,14 @@
 
 @main("Account") {
 	<p>ADMIN</p>
-	<table>
-		<td>AccountNumber</td><td>FirstName</td><td>Surname</td><td>EmailAddress</td><tr>
-		@for(account <- accounts){
-			<td>@account.accNo</td><td>@account.fName</td><td>@account.lName</td><td>@account.email</td><tr>
-		}
+	<table class="table table-hover">
+		<thead>
+			<th>AccountNumber</th><th>FirstName</th><th>Surname</th><th>EmailAddress</th>
+		</thead>
+		<tbody>
+			@for(account <- accounts){
+				<td>@account.accNo</td><td>@account.fName</td><td>@account.lName</td><td>@account.email</td><tr>
+			}
+		</tbody>
 	</table>
-	@buttons()
 }
