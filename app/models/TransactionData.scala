@@ -19,6 +19,4 @@ object TransactionData{
     "accNoTo" -> nonEmptyText.verifying(accountExists),
     "amount" -> nonEmptyText.verifying(numberConstraint))
   (TransactionData2.apply)(TransactionData2.unapply))
-
-
 }

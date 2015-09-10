@@ -3,8 +3,8 @@
 @main("Account") {
 	<p>ADMIN</p>
 	@helper.form(action = routes.Admin.doAccountSearch()){
-		@helper.select(field = form("searchField"), options = Seq(("fName","First Name"),("lName","Surname"),("email","Email Address"),("accNo","Account Number")),'_label -> null)
+		@helper.select(field = form("searchField"), options = Seq(("fName","First Name"),("lName","Surname"),("email","Email Address"),("accNo","Account Number")),'_label -> null, 'class -> "form-control")
 		@helper.inputText(form("searchCriteria"),'_label -> null, 'class -> "form-control")
-		<input type="submit" value="Search" class="btn btn-default"/>
+		<input type="submit" value="Search" class="bnt btn-default"/>
 	}
 }
