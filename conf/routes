@@ -9,6 +9,7 @@ POST	/doDeposit       			controllers.Deposit.doDeposit
 POST	/doWithdraw          		controllers.Withdraw.doWithdraw
 POST	/doTransfer      			controllers.Transfer.doTransfer
 POST	/doRegister       			controllers.Register.doRegister
+POST    /doPasswordChange           controllers.Settings.doPasswordChange
 
 #Admin
 POST	/showAddAccount             controllers.Admin.showAddAccount
@@ -29,7 +30,7 @@ GET	    /showRegister           	controllers.Register.showRegister
 GET	    /doRegister       			controllers.Register.showRegister
 GET	    /signOut       				controllers.Application.signOut
 GET     /showTransactions           controllers.Transactions.showTransactions
-
+GET     /showPasswordChange         controllers.Settings.showPasswordChange
 
 
 # Map static resources from the /public folder to the /assets URL path

@@ -12,8 +12,7 @@ libraryDependencies ++= Seq(
   ws,
   specs2 % Test,
   "mysql" % "mysql-connector-java" % "5.1.35",
-  "org.reactivemongo" %% "reactivemongo" % "0.11.6",
-  "org.scalatest" %% "scalatest" % "2.1.4" % "test"
+  "com.typesafe.play" %% "anorm" % "2.4.0"
 )
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"

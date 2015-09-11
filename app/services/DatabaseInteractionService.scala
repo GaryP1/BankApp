@@ -8,9 +8,9 @@ import play.api.Play.current
 import play.api.db._
 
 
-object DatabaseInteractionService {  
+object DatabaseInteractionService {
   def executeUpdate(query : String){
-    DB withConnection { con => 
+    DB withConnection { con =>
       try{
         val stmt = con.createStatement
         stmt executeUpdate query
