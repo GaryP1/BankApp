@@ -4,11 +4,11 @@
         <h4>Password Change</h4>
         @errorCheck(message)
         <p>Old Password</p>
-        @helper.inputPassword(form("oldPassword"),'_label -> null, 'class -> "form-control")
+        @helper.inputPassword(form("password"),'_label -> null, 'class -> "form-control")
         <p>New Password</p>
-        @helper.inputPassword(form("newPassword"),'_label -> null, 'class -> "form-control")
+        @helper.inputText(form("fName"),'_label -> null, 'class -> "form-control")
         <p>Confirm Password</p>
-        @helper.inputPassword(form("confPassword"),'_label -> null, 'class -> "form-control")
+        @helper.inputText(form("lName"),'_label -> null, 'class -> "form-control")
         <input type="submit" value="Submit Change"/>
     }
 }

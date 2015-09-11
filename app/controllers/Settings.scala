@@ -30,4 +30,23 @@ class Settings extends Controller{
       )
     }catch{case e : FieldException => BadRequest(views.html.passwordChange(account, e message))}
   }
+
+  def showEmailChange() =Action{implicit request =>
+    val account = AccountFetchService getAccount("lastsession", request.session.get("uuid").get)
+    Ok(views.html.emailChange(account))
+  }
+
+
+  def doEmailChange() = Action {implicit request=>
+    val account = AccountFetchService getAccount("lastsession", request.session.get("uuid").get)
+    try{
+      SettingsForm.emailChangeForm.bindFromRequest.fold(
+        errors => BadRequest(views.html.emailChange(account, "Change Failed")),
+        values => {
+          AccountEditingService editAccountField(account accNo, values email, "email")
+          Ok(views.html.home(account, "Email Change Successful"))
+        }
+      )
+    }catch{case e : FieldException => BadRequest(views.html.emailChange(account, e message))}
+  }
 }

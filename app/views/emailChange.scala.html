@@ -1,0 +1,10 @@
+@(account : Account, message : String = "", form : Form[EmailChangeModel] = SettingsForm.emailChangeForm)(implicit messages : Messages)
+@main("Settings"){
+    @helper.form(action = routes.Settings.doEmailChange){
+        <h4>Email Change</h4>
+        @errorCheck(message)
+        <p>New Email</p>
+        @helper.inputText(form("email"),'_label -> null, 'class -> "form-control")
+        <input type="submit" value="Submit Change"/>
+    }
+}

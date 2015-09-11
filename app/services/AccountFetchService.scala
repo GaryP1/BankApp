@@ -56,14 +56,10 @@ object AccountFetchService {
     val stmt = con createStatement()
     var res : ResultSet = null
     column match{
-      case "fName" =>
-        res = stmt executeQuery s"select accNo from userinfo where fName = '$input'"
-      case "lName" =>
-        res = stmt executeQuery s"select accNo from userinfo where lName = '$input'"
-      case "email" =>
-        res = stmt executeQuery s"select accNo from userinfo where email = '$input'"
-      case "accNo" =>
-        res = stmt executeQuery s"select accNo from userinfo where accNo = '$input'"
+      case "fName" => res = stmt executeQuery s"select accNo from userinfo where fName = '$input'"
+      case "lName" => res = stmt executeQuery s"select accNo from userinfo where lName = '$input'"
+      case "email" => res = stmt executeQuery s"select accNo from userinfo where email = '$input'"
+      case "accNo" => res = stmt executeQuery s"select accNo from userinfo where accNo = '$input'"
     }
     val accounts : ArrayList[Account] = new ArrayList[Account]
     while(res next) {
