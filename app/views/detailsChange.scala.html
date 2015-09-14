@@ -1,14 +1,12 @@
-@(account : Account, message : String = "", form : Form[PasswordChangeModel] = SettingsForm.passwordChangeForm)(implicit messages : Messages)
+@(account : Account, message : String = "", form : Form[DetailsChangeModel] = SettingsForm.detailsChangeForm)(implicit messages : Messages)
 @main("Settings"){
-    @helper.form(action = routes.Settings.doPasswordChange){
-        <h4>Password Change</h4>
+    @helper.form(action = routes.Settings.doDetailsChange){
+        <h4>Details Change</h4>
         @errorCheck(message)
-        <p>Old Password</p>
-        @helper.inputPassword(form("password"),'_label -> null, 'class -> "form-control")
-        <p>New Password</p>
+        <p>First Name</p>
         @helper.inputText(form("fName"),'_label -> null, 'class -> "form-control")
-        <p>Confirm Password</p>
+        <p>Surname</p>
         @helper.inputText(form("lName"),'_label -> null, 'class -> "form-control")
-        <input type="submit" value="Submit Change"/>
+        <input type="submit" value="Submit Change" class="btn btn-default"/>
     }
 }
